@@ -12,24 +12,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/complex-network/a6f01df4f9eb33cccd6b.worker.js"
   },
   {
-    "revision": "764aa17e73cf4964fda46c21a5785f07",
+    "revision": "0b48536589dfa0d877bc3281aba86bb6",
     "url": "/complex-network/index.html"
   },
   {
-    "revision": "3486322a2861ed6fcb57",
+    "revision": "98116bb57d8da04801d2",
+    "url": "/complex-network/static/css/2.0c0672e5.chunk.css"
+  },
+  {
+    "revision": "6b4c8b4bc40545f76926",
     "url": "/complex-network/static/css/main.6b2c0c56.chunk.css"
   },
   {
-    "revision": "eed1c5f1aa37d8e9f5d7",
-    "url": "/complex-network/static/js/2.a1be5f96.chunk.js"
+    "revision": "98116bb57d8da04801d2",
+    "url": "/complex-network/static/js/2.4302cf71.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/complex-network/static/js/2.a1be5f96.chunk.js.LICENSE.txt"
+    "url": "/complex-network/static/js/2.4302cf71.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3486322a2861ed6fcb57",
-    "url": "/complex-network/static/js/main.543ee6ad.chunk.js"
+    "revision": "6b4c8b4bc40545f76926",
+    "url": "/complex-network/static/js/main.e028d872.chunk.js"
   },
   {
     "revision": "8adf64dd02b61bd6079c",
