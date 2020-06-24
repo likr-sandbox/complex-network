@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/complex-network/static/css/main.6b2c0c56.chunk.css",
+    "main.js": "/complex-network/static/js/main.543ee6ad.chunk.js",
+    "main.js.map": "/complex-network/static/js/main.543ee6ad.chunk.js.map",
+    "runtime-main.js": "/complex-network/static/js/runtime-main.2f4d0d0a.js",
+    "runtime-main.js.map": "/complex-network/static/js/runtime-main.2f4d0d0a.js.map",
+    "static/js/2.a1be5f96.chunk.js": "/complex-network/static/js/2.a1be5f96.chunk.js",
+    "static/js/2.a1be5f96.chunk.js.map": "/complex-network/static/js/2.a1be5f96.chunk.js.map",
+    "1.a6f01df4f9eb33cccd6b.worker.js": "/complex-network/1.a6f01df4f9eb33cccd6b.worker.js",
+    "1.a6f01df4f9eb33cccd6b.worker.js.map": "/complex-network/1.a6f01df4f9eb33cccd6b.worker.js.map",
+    "1247e9ac8688f62cf085.module.wasm": "/complex-network/1247e9ac8688f62cf085.module.wasm",
+    "a6f01df4f9eb33cccd6b.worker.js": "/complex-network/a6f01df4f9eb33cccd6b.worker.js",
+    "a6f01df4f9eb33cccd6b.worker.js.map": "/complex-network/a6f01df4f9eb33cccd6b.worker.js.map",
+    "index.html": "/complex-network/index.html",
+    "precache-manifest.b54ab886e9494ee207418859ec9be1d4.js": "/complex-network/precache-manifest.b54ab886e9494ee207418859ec9be1d4.js",
+    "service-worker.js": "/complex-network/service-worker.js",
+    "static/css/main.6b2c0c56.chunk.css.map": "/complex-network/static/css/main.6b2c0c56.chunk.css.map",
+    "static/js/2.a1be5f96.chunk.js.LICENSE.txt": "/complex-network/static/js/2.a1be5f96.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2f4d0d0a.js",
+    "static/js/2.a1be5f96.chunk.js",
+    "static/css/main.6b2c0c56.chunk.css",
+    "static/js/main.543ee6ad.chunk.js"
+  ]
+}
