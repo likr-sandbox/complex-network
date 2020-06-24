@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/complex-network/a6f01df4f9eb33cccd6b.worker.js"
   },
   {
-    "revision": "0b48536589dfa0d877bc3281aba86bb6",
+    "revision": "b486f0c38d6c08b79fd05027303e7f91",
     "url": "/complex-network/index.html"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/complex-network/static/css/2.0c0672e5.chunk.css"
   },
   {
-    "revision": "6b4c8b4bc40545f76926",
+    "revision": "704aa4607a9d32e5d44f",
     "url": "/complex-network/static/css/main.6b2c0c56.chunk.css"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/complex-network/static/js/2.4302cf71.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6b4c8b4bc40545f76926",
-    "url": "/complex-network/static/js/main.e028d872.chunk.js"
+    "revision": "704aa4607a9d32e5d44f",
+    "url": "/complex-network/static/js/main.cae77056.chunk.js"
   },
   {
     "revision": "8adf64dd02b61bd6079c",
