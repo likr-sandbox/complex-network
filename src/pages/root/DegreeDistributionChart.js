@@ -52,7 +52,7 @@ const DegreeDistributionChart = ({ graph }) => {
         tickRotation: 0,
         legend: "Frequency",
         legendPosition: "middle",
-        legendOffset: 60,
+        legendOffset: -60,
       }}
       labelSkipWidth={12}
       labelSkipHeight={12}
