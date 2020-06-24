@@ -18,14 +18,16 @@ const RootPage = () => {
     return <p>loading</p>;
   }
   return (
-    <div>
-      <div style={{ width: "1200px", height: "1200px" }}>
-        <NetworkChart graph={graph} />
+    <section className="section">
+      <div className="container">
+        <div style={{ width: "1200px", height: "1200px" }}>
+          <NetworkChart graph={graph} />
+        </div>
+        <div style={{ width: "1200px", height: "400px" }}>
+          <DegreeDistributionChart graph={graph} />
+        </div>
       </div>
-      <div style={{ width: "1200px", height: "400px" }}>
-        <DegreeDistributionChart graph={graph} />
-      </div>
-    </div>
+    </section>
   );
 };
 
