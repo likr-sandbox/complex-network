@@ -4,6 +4,7 @@ extern crate serde_derive;
 pub mod algorithm;
 pub mod centrality;
 pub mod graph_generation;
+pub mod simulation;
 
 use js_sys::{Array, Function, Object, Reflect};
 use petgraph::graph::{edge_index, node_index};
@@ -221,4 +222,12 @@ pub fn histogram(x: JsValue, bins: usize, min_x: f64, max_x: f64) -> JsValue {
         count[k].y += 1;
     }
     JsValue::from_serde(&count).unwrap()
+}
+
+#[wasm_bindgen(js_name = siModel)]
+pub fn si_model(graph: &JsGraph, state: JsValue, p: f64, seed: usize) -> JsValue {
+    let mut rng = StdRng::seed_from_u64(seed as u64);
+    let state = state.into_serde::<Vec<bool>>().unwrap();
+    let next_state = self::simulation::si_model(&graph.graph, &state, p, &mut rng);
+    JsValue::from_serde(&next_state).unwrap()
 }

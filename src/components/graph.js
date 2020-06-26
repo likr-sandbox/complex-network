@@ -84,3 +84,7 @@ export const pagerank = async (graph, d, iter) => {
 export const histogram = async (x, bins, minX, maxX) => {
   return mod.histogram(x, bins, minX, maxX);
 };
+
+export const siModel = async (graph, state, p) => {
+  return mod.siModel(graph.ptr, state, p);
+};

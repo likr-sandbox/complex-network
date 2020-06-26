@@ -116,3 +116,10 @@ export const histogram = async (x, bins, minX, maxX) => {
   const { histogram } = await mod;
   return histogram(x, bins, minX, maxX);
 };
+
+export const siModel = async (ptr, state, p) => {
+  const { Graph, siModel } = await mod;
+  const seed = new Date().getTime();
+  const graph = Graph.__wrap(ptr);
+  return siModel(graph, state, p, seed);
+};
