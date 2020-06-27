@@ -168,9 +168,27 @@ pub fn configuration_model(degrees: JsValue, seed: usize) -> Result<JsGraph, JsV
     .map_err(|e| e.into())
 }
 
+#[wasm_bindgen]
+pub fn subgraph(graph: &JsGraph, components: &JsValue) -> JsGraph {
+    let components = components.into_serde::<Vec<usize>>().unwrap();
+    JsGraph {
+        graph: self::graph_generation::subgraph(
+            &graph.graph,
+            &components,
+            |_, _| Object::new().into(),
+            |_, _, _| Object::new().into(),
+        ),
+    }
+}
+
 #[wasm_bindgen(js_name = componentCount)]
 pub fn component_count(graph: &JsGraph) -> usize {
     self::algorithm::component_count(&graph.graph)
+}
+
+#[wasm_bindgen(js_name = connectedComponents)]
+pub fn connected_components(graph: &JsGraph) -> JsValue {
+    JsValue::from_serde(&self::algorithm::connected_components(&graph.graph)).unwrap()
 }
 
 #[wasm_bindgen]

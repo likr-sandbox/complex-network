@@ -76,6 +76,12 @@ export const configurationModel = async (degrees) => {
   return graph.ptr;
 };
 
+export const subgraph = async (ptr, components) => {
+  const { Graph, subgraph } = await mod;
+  const graph = Graph.__wrap(ptr);
+  return subgraph(graph, components).ptr;
+};
+
 export const diameter = async (ptr) => {
   const { Graph, diameter } = await mod;
   const graph = Graph.__wrap(ptr);
@@ -86,6 +92,13 @@ export const componentCount = async (ptr) => {
   const { Graph, componentCount } = await mod;
   const graph = Graph.__wrap(ptr);
   return componentCount(graph);
+};
+
+export const connectedComponents = async (ptr) => {
+  const { Graph, connectedComponents } = await mod;
+  console.log(await mod);
+  const graph = Graph.__wrap(ptr);
+  return connectedComponents(graph);
 };
 
 export const triangles = async (ptr) => {

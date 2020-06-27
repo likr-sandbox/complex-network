@@ -11,7 +11,13 @@ import {
   IonLabel,
   IonList,
 } from "@ionic/react";
-import { Graph, randomScaleFreeGraph, siModel } from "./graph";
+import {
+  Graph,
+  connectedComponents,
+  randomScaleFreeGraph,
+  siModel,
+  subgraph,
+} from "./graph";
 import slice from "./slice";
 
 const startSimulation = async (graph, steps, p) => {
@@ -45,7 +51,9 @@ const GraphGenerationForm = () => {
             const n = +event.target.elements.n.value;
             const gamma = +event.target.elements.gamma.value;
             const graph = await randomScaleFreeGraph(n, 1, gamma);
-            dispatch(slice.actions.setGraph(graph.ptr));
+            const components = await connectedComponents(graph);
+            const sub = await subgraph(graph, components[0]);
+            dispatch(slice.actions.setGraph(sub.ptr));
           }}
         >
           <IonList>

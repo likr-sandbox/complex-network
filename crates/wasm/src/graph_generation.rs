@@ -3,6 +3,7 @@ use petgraph::prelude::*;
 use petgraph::EdgeType;
 use rand::prelude::*;
 use std::cmp::{max, min};
+use std::collections::HashMap;
 
 pub fn random_graph<
     N,
@@ -158,4 +159,38 @@ pub fn configuration_model<
         graph.add_edge(node_index(i), node_index(j), create_edge(i, j));
     }
     Ok(graph)
+}
+
+pub fn subgraph<
+    N,
+    E,
+    Ty: EdgeType,
+    Ix: IndexType,
+    F: Fn(&N, usize) -> N,
+    G: Fn(&E, usize, usize) -> E,
+>(
+    graph: &Graph<N, E, Ty, Ix>,
+    nodes: &Vec<usize>,
+    create_node: F,
+    create_edge: G,
+) -> Graph<N, E, Ty, Ix> {
+    let mut new_graph = Graph::with_capacity(0, 0);
+    let index = nodes
+        .iter()
+        .enumerate()
+        .map(|(i, &u)| {
+            let node = &graph[node_index(u)];
+            (u, new_graph.add_node(create_node(&node, i)))
+        })
+        .collect::<HashMap<_, _>>();
+    for e in graph.edge_indices() {
+        let (u, v) = graph.edge_endpoints(e).unwrap();
+        if index.contains_key(&u.index()) && index.contains_key(&v.index()) {
+            let edge = &graph[e];
+            let u2 = index[&u.index()];
+            let v2 = index[&v.index()];
+            new_graph.add_edge(u2, v2, create_edge(&edge, u2.index(), v2.index()));
+        }
+    }
+    new_graph
 }

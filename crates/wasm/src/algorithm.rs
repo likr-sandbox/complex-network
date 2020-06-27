@@ -3,6 +3,7 @@ use petgraph::prelude::*;
 use petgraph::unionfind::*;
 use petgraph::visit::GetAdjacencyMatrix;
 use petgraph::EdgeType;
+use std::cmp::Reverse;
 
 pub fn warshall_floyd<
     N,
@@ -61,6 +62,28 @@ pub fn component_count<N, E, Ty: EdgeType, Ix: IndexType>(graph: &Graph<N, E, Ty
         }
     }
     count
+}
+
+pub fn connected_components<N, E, Ty: EdgeType, Ix: IndexType>(
+    graph: &Graph<N, E, Ty, Ix>,
+) -> Vec<Vec<usize>> {
+    let n = graph.node_count();
+    let mut components = UnionFind::new(n);
+    for e in graph.edge_indices() {
+        let (u, v) = graph.edge_endpoints(e).unwrap();
+        let i = u.index();
+        let j = v.index();
+        components.union(i, j);
+    }
+    let mut result = vec![vec![]; n];
+    for i in 0..n {
+        result[components.find(i)].push(i);
+    }
+    result.sort_by_key(|x| Reverse(x.len()));
+    while result.len() > 0 && result[result.len() - 1].len() == 0 {
+        result.pop();
+    }
+    result
 }
 
 pub fn triangles<N, E, Ty: EdgeType, Ix: IndexType>(graph: &Graph<N, E, Ty, Ix>) -> Vec<usize> {
