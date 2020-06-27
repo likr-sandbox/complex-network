@@ -24,10 +24,11 @@
     "@ionic/react": "^5.2.2",
     "@nivo/bar": "^0.62.0",
     "@nivo/line": "^0.62.0",
-    "@nivo/network": "^0.62.0",
     "@reduxjs/toolkit": "^1.4.0",
+    "egraph": "^4.0.1-alpha.14",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-eg-renderer": "^1.5.0-alpha.5",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "wasm": "file:crates/wasm/pkg"

@@ -1,58 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { ResponsiveNetwork } from "@nivo/network";
 import { Graph } from "./graph";
+import { layout } from "./layout";
+import { EgRenderer } from "react-eg-renderer";
 
-const nodelink = async (graph, state) => {
+const applyLayout = async (graph) => {
   const data = await graph.toJSON();
-  data.nodes.forEach((node, i) => {
-    node.id = node.id.toString();
-    node.radius = 3;
-    if (state[i]) {
-      node.color = "red";
-    } else {
-      node.color = "green";
-    }
-  });
-  for (const link of data.links) {
-    link.source = link.source.toString();
-    link.target = link.target.toString();
-    link.distance = 30;
-  }
-  return data;
+  return layout(data);
 };
 
 const NetworkChart = () => {
+  const wrapperRef = useRef();
   const graphPtr = useSelector(({ graphPtr }) => graphPtr);
   const states = useSelector(({ states }) => states);
   const step = useSelector(({ step }) => step);
   const [data, setData] = useState({ nodes: [], links: [] });
+  const [size, setSize] = useState({ width: 1, height: 1 });
 
   useEffect(() => {
     if (graphPtr) {
       (async () => {
         const graph = new Graph(graphPtr);
-        const state = step < states.length ? states[step] : [];
-        const data = await nodelink(graph, state);
-        setData(data);
+        setData(await applyLayout(graph));
       })();
     }
-  }, [graphPtr, states, step]);
+  }, [graphPtr]);
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(() => {
+      setSize({
+        width: wrapperRef.current.clientWidth,
+        height: wrapperRef.current.clientHeight,
+      });
+    });
+    resizeObserver.observe(wrapperRef.current);
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
+
+  const layoutData = useMemo(() => {
+    const state = step < states.length ? states[step] : [];
+    return Object.assign({}, data, {
+      nodes: data.nodes.map((node, i) => {
+        return Object.assign({}, node, {
+          width: 5,
+          height: 5,
+          fillColor: state[i] ? "red" : "green",
+        });
+      }),
+    });
+  }, [data, states, step]);
 
   return (
-    <div style={{ width: "100%", height: "800px" }}>
-      <ResponsiveNetwork
-        nodes={data.nodes}
-        links={data.links}
-        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-        iterations={90}
-        repulsivity={30}
-        nodeColor={(node) => node.color}
-        nodeBorderColor="none"
-        nodeBorderWidth={1}
-        linkColor="#ccc"
-        motionStiffness={160}
-        motionDamping={12}
+    <div ref={wrapperRef} style={{ width: "100%", height: "600px" }}>
+      <EgRenderer
+        width={size.width}
+        height={size.height}
+        data={layoutData}
+        default-node-stroke-width="0"
+        default-link-stroke-color="#ccc"
       />
     </div>
   );

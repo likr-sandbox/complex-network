@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import {
   IonApp,
   IonPage,
@@ -15,6 +15,10 @@ import slice from "./slice";
 
 const store = configureStore({
   reducer: slice.reducer,
+  middleware: getDefaultMiddleware({
+    immutableCheck: false,
+    serializableCheck: false,
+  }),
 });
 
 const App = () => {

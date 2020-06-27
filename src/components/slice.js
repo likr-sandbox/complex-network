@@ -11,6 +11,8 @@ const slice = createSlice({
     setGraph(state, action) {
       return Object.assign({}, state, {
         graphPtr: action.payload,
+        state: [],
+        step: 0,
       });
     },
     setStates(state, action) {
