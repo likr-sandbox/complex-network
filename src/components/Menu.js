@@ -117,8 +117,9 @@ const SimulationForm = () => {
               <IonInput
                 name="steps"
                 type="number"
-                value="100"
+                value="1000"
                 min="0"
+                step="100"
                 required
               />
             </IonItem>

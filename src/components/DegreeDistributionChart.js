@@ -39,7 +39,7 @@ const DegreeDistributionChart = () => {
     <div style={{ width: "100%", height: "500px" }}>
       <ResponsiveScatterPlot
         data={data}
-        margin={{ top: 10, right: 10, bottom: 70, left: 90 }}
+        margin={{ top: 10, right: 20, bottom: 70, left: 90 }}
         xScale={{ type: "log", min: 1, max: "auto" }}
         yScale={{ type: "log", min: 1e-4, max: 1 }}
         blendMode="multiply"

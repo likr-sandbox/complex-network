@@ -20,7 +20,7 @@ const InfectionChart = () => {
     <div style={{ width: "100%", height: "500px" }}>
       <ResponsiveLine
         data={data}
-        margin={{ top: 10, right: 10, bottom: 70, left: 60 }}
+        margin={{ top: 10, right: 20, bottom: 70, left: 60 }}
         xScale={{ type: "linear" }}
         yScale={{ type: "linear", min: 0, max: 1 }}
         enablePoints={false}
